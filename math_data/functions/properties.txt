@@ -1,0 +1,27 @@
+a connected graph
+a connected and bipartite graph
+an eulerian graph
+a connected and planar graph
+a connected and regular graph
+a connected and cubic graph
+a connected graph which is not K_n
+a connected and triangle-free graph
+a connected and at-free graph
+a tree graph
+a connected and chordal graph
+a connected and claw-free graph
+a connected graph with maximum degree at most 3
+a connected graph which is not K_n and has maximum degree at most 3
+a connected, claw-free, and cubic graph
+a connected, planar, and cubic graph
+a connected and cubic graph which is not K_4
+a graph with a prime number of vertices
+a graph with a prime number of edges
+a graph with a prime independence number
+a graph with a prime diameter
+a graph with a prime zero forcing number
+a graph with a prime total domination number
+a graph with a prime domination number
+a graph with a prime residue
+a graph with a prime matching number
+a connected and well-covered graph
