@@ -101,6 +101,9 @@ class LinearConjecture:
         The hypothesis of the conjecture.
     symbol : string
         The symbol of the conjecture.
+    touch : int
+        The number of graphs that touch the conjecture, i.e. the number of graphs
+        that satisfy the hypothesis and the conclusion with equality.
 
     Methods
     -------
@@ -108,6 +111,10 @@ class LinearConjecture:
         Returns the conjecture as a string.
     __call__(name, df):
         Returns the value of the conjecture for the graph with the given name in the given dataframe.
+    __eq__(other):
+        Returns True if the conjecture is equal to the other conjecture, and False otherwise.
+    get_sharp_graphs(df):
+        Returns the graphs that touch the conjecture.
 
     Examples
     --------
@@ -117,7 +124,7 @@ class LinearConjecture:
     >>> conjecture = LinearConjecture(conclusion, hypothesis)
     >>> print(conjecture)
     """
-    def __init__(self, hypothesis, conclusion, symbol, touch=0):
+    def __init__(self, hypothesis, conclusion, symbol="X", touch=0):
         self.hypothesis = hypothesis
         self.conclusion = conclusion
         self.symbol = symbol
@@ -139,6 +146,9 @@ class LinearConjecture:
             return self.conclusion(name, df).values[0]
         else:
             return False
+
+    def __eq__(self, other):
+        return self.hypothesis == other.hypothesis and self.conclusion == other.conclusion and self.symbol == other.symbol
 
     def get_sharp_graphs(self, df):
         return df.loc[(df[self.hypothesis.statement] == True) & (df[self.conclusion.lhs] == self.conclusion.slope * df[self.conclusion.rhs] + self.conclusion.intercept)]
