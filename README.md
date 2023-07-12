@@ -38,7 +38,7 @@ The main interaction with the program is through the main.py file. Run this file
 python main.py
 ```
 
-Upon execution, you'll be prompted to input the name of the CSV file containing the data to conjecture on. The file should be placed in the `math_data/data/` directory and you only need to enter the name without the `.csv` extension.
+Upon execution, you'll be prompted to input the name (`graphs` for graph conjectures) of the CSV file containing the data to conjecture on. The file should be placed in the `math_data/data/` directory and you only need to enter the name without the `.csv` extension.
 
 After reading the file, the program presents a list of numerical invariants detected from the file. You'll then select one invariant to conjecture on.
 
