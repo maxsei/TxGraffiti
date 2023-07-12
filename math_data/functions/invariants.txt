@@ -94,3 +94,4 @@ domination_product_of_digits
 domination_number_of_prime_factors
 domination_number_of_distinct_prime_factors
 min_edge_cover
+edge_chromatic_number

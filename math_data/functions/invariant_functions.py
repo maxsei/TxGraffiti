@@ -166,6 +166,9 @@ def calc(G, invariant):
         return domination_number_of_distinct_prime_factors(G)
     elif invariant == "min_edge_cover":
         return len(gp.min_edge_cover(G))
+    elif invariant == "edge_chromatic_number":
+        new_G = gp.line_graph(G)
+        return gp.chromatic_number(new_G)
     else:
         return getattr(gp, invariant)(G)
 
@@ -240,6 +243,14 @@ def property_check(G, property):
         return gp.is_connected(G) and isprime(gp.residue(G))
     elif property == "a connected and well-covered graph":
         return gp.is_connected(G) and gp.independence_number(G) == gp.independent_domination_number(G)
+    elif property == "a connected and Class-1 graph":
+        new_G = gp.line_graph(G)
+        return gp.is_connected(G) and gp.chromatic_number(new_G) == gp.max_degree(G)
+    elif property == "a connected and Class-2 graph":
+        new_G = gp.line_graph(G)
+        return gp.is_connected(G) and gp.chromatic_number(new_G) == gp.max_degree(G) + 1
+    elif property == "a connected and perfect graph":
+        return gp.is_connected(G) and is_perfect(G)
     else:
         return getattr(gp, property)(G)
 
@@ -486,6 +497,8 @@ def domination_number_of_prime_factors(G):
 def domination_number_of_distinct_prime_factors(G):
     n = gp.domination_number(G)
     return len(set(primefactors(n)))
+
+
 
 
 
