@@ -60,9 +60,6 @@ if single_property_answer == "y":
     else:
         conjectures = write_on_the_wall(df, [numerical_columns[invariant_index]], numerical_columns, [boolean_columns[property_index]], use_dalmation=False)
 
-    # Remove the known conjectures from the list of conjectures.
-    conjectures = filter_known_conjectures(conjectures, known_conjectures)
-
     # print the conjectures.
     print("The conjectures are:")
     for i, conjecture in enumerate(conjectures):

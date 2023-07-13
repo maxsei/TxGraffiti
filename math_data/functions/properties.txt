@@ -25,5 +25,3 @@ a graph with a prime domination number
 a graph with a prime residue
 a graph with a prime matching number
 a connected and well-covered graph
-a connected and Class-1 graph
-a connected and Class-2 graph
