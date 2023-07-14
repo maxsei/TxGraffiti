@@ -29,7 +29,6 @@ k_residual_index
 (order - domination_number)
 (order - total_domination_number)
 (order - connected_domination_number)
-(order - independence_number)
 (order - power_domination_number)
 (order - zero_forcing_number)
 (order - diameter)
@@ -94,3 +93,7 @@ domination_product_of_digits
 domination_number_of_prime_factors
 domination_number_of_distinct_prime_factors
 min_edge_cover
+[(annihilation_number + residue)/ max_degree]
+[order/ max_degree]
+[order/ (max_degree + 1)]
+[order/ (max_degree - 1)]

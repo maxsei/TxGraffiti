@@ -15,13 +15,16 @@ a connected graph which is not K_n and has maximum degree at most 3
 a connected, claw-free, and cubic graph
 a connected, planar, and cubic graph
 a connected and cubic graph which is not K_4
-a graph with a prime number of vertices
-a graph with a prime number of edges
-a graph with a prime independence number
-a graph with a prime diameter
-a graph with a prime zero forcing number
-a graph with a prime total domination number
-a graph with a prime domination number
-a graph with a prime residue
-a graph with a prime matching number
+a connected graph with a prime number of vertices
+a connected graph with a prime number of edges
+a connected graph with a prime independence number
+a connected graph with a prime diameter
+a connected graph with a prime zero forcing number
+a connected graph with a prime total domination number
+a connected graph with a prime domination number
+a connected graph with a prime residue
+a connected graph with a prime matching number
 a connected and well-covered graph
+a connected graph with diameter at most 3
+a connected and planar graph with diameter at most 3
+a connected graph with a total domination number equal to the domination number

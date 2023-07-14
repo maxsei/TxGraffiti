@@ -166,9 +166,14 @@ def calc(G, invariant):
         return domination_number_of_distinct_prime_factors(G)
     elif invariant == "min_edge_cover":
         return len(gp.min_edge_cover(G))
-    elif invariant == "edge_chromatic_number":
-        new_G = gp.line_graph(G)
-        return gp.chromatic_number(new_G)
+    elif invariant == "[(annihilation_number + residue)/ max_degree]":
+        return (gp.annihilation_number(G) + gp.residue(G)) / gp.max_degree(G)
+    elif invariant == "[order/ max_degree]":
+        return gp.number_of_nodes(G) / gp.max_degree(G)
+    elif invariant == "[order/ (max_degree + 1)]":
+        return gp.number_of_nodes(G) / (gp.max_degree(G) + 1)
+    elif invariant == "[order/ (max_degree - 1)]":
+        return gp.number_of_nodes(G) / (gp.max_degree(G) - 1)
     else:
         return getattr(gp, invariant)(G)
 
@@ -223,23 +228,25 @@ def property_check(G, property):
         return gp.is_connected(G) and gp.min_degree(G) == 3 and gp.max_degree(G) == 3 and gp.is_claw_free(G)
     elif property == "a connected, planar, and cubic graph":
         return gp.is_connected(G) and gp.min_degree(G) == 3 and gp.max_degree(G) == 3 and gp.is_planar(G)
-    elif property == "a graph with a prime number of vertices":
+    elif property == "a connected graph with a prime number of vertices":
         return gp.is_connected(G) and isprime(gp.number_of_nodes(G))
-    elif property == "a graph with a prime number of edges":
+    elif property == "a connected graph with a prime number of edges":
         return gp.is_connected(G) and isprime(gp.number_of_edges(G))
-    elif property == "a graph with a prime independence number":
+    elif property == "a connected graph with a prime independence number":
         return gp.is_connected(G) and isprime(gp.independence_number(G))
-    elif property == "a graph with a prime diameter":
+    elif property == "a connected graph with a prime diameter":
         return gp.is_connected(G) and isprime(gp.diameter(G))
-    elif property == "a graph with a prime zero forcing number":
+    elif property == "a connected graph with a prime zero forcing number":
         return gp.is_connected(G) and isprime(gp.zero_forcing_number(G))
-    elif property == "a graph with a prime total domination number":
+    elif property == "a connected graph with a prime total domination number":
         return gp.is_connected(G) and isprime(gp.total_domination_number(G))
-    elif property == "a graph with a prime domination number":
+    elif property == "a connected graph with a prime domination number":
         return gp.is_connected(G) and isprime(gp.domination_number(G))
-    elif property == "a graph with a prime matching number":
+    elif property == "a connected graph with a total domination number equal to the domination number":
+        return gp.is_connected(G) and gp.total_domination_number(G) == gp.domination_number(G)
+    elif property == "a connected graph with a prime matching number":
         return gp.is_connected(G) and isprime(gp.matching_number(G))
-    elif property == "a graph with a prime residue":
+    elif property == "a connected graph with a prime residue":
         return gp.is_connected(G) and isprime(gp.residue(G))
     elif property == "a connected and well-covered graph":
         return gp.is_connected(G) and gp.independence_number(G) == gp.independent_domination_number(G)
@@ -249,8 +256,10 @@ def property_check(G, property):
     elif property == "a connected and Class-2 graph":
         new_G = gp.line_graph(G)
         return gp.is_connected(G) and gp.chromatic_number(new_G) == gp.max_degree(G) + 1
-    elif property == "a connected and perfect graph":
-        return gp.is_connected(G) and is_perfect(G)
+    elif property == "a connected graph with diameter at most 3":
+        return gp.is_connected(G) and gp.diameter(G) <= 3
+    elif property == "a connected and planar graph with diameter at most 3":
+        return gp.is_connected(G) and gp.is_planar(G) and gp.diameter(G) <= 3
     else:
         return getattr(gp, property)(G)
 
