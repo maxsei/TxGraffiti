@@ -46,6 +46,14 @@ def calc(G, invariant):
         return gp.number_of_nodes(G) - gp.diameter(G)
     elif invariant == "(order - radius)":
         return gp.number_of_nodes(G) - gp.radius(G)
+    elif invariant == "(order - triameter)":
+        return gp.number_of_nodes(G) - gp.triameter(G)
+    elif invariant == "(size - diameter)":
+        return gp.number_of_edges(G) - gp.diameter(G)
+    elif invariant == "(size - radius)":
+        return gp.number_of_edges(G) - gp.radius(G)
+    elif invariant == "(size - triameter)":
+        return gp.number_of_edges(G) - gp.triameter(G)
     elif invariant == "(order - independent_domination_number)":
         return gp.number_of_nodes(G) - gp.independent_domination_number(G)
     elif invariant == "(order - chromatic_number)":
@@ -54,8 +62,10 @@ def calc(G, invariant):
         return gp.number_of_nodes(G) - gp.matching_number(G)
     elif invariant == "(order - min_maximal_matching_number)":
         return gp.number_of_nodes(G) - gp.min_maximal_matching_number(G)
-    elif invariant == "(order - triameter)":
-        return gp.number_of_nodes(G) - gp.triameter(G)
+    elif invariant == "(size - matching_number)":
+        return gp.number_of_edges(G) - gp.matching_number(G)
+    elif invariant == "(size - min_maximal_matching_number)":
+        return gp.number_of_edges(G) - gp.min_maximal_matching_number(G)
     elif invariant == "(order - min_degree)":
         return gp.number_of_nodes(G) - gp.min_degree(G)
     elif invariant == "(order - max_degree)":
@@ -174,6 +184,10 @@ def calc(G, invariant):
         return gp.number_of_nodes(G) / (gp.max_degree(G) + 1)
     elif invariant == "[order/ (max_degree - 1)]":
         return gp.number_of_nodes(G) / (gp.max_degree(G) - 1)
+    elif invariant == "[order/ (max_degree + 2)]":
+        return gp.number_of_nodes(G) / (gp.max_degree(G) + 2)
+    elif invariant == "(residue + annihilation_number)":
+        return gp.residue(G) + gp.annihilation_number(G)
     else:
         return getattr(gp, invariant)(G)
 
@@ -260,6 +274,18 @@ def property_check(G, property):
         return gp.is_connected(G) and gp.diameter(G) <= 3
     elif property == "a connected and planar graph with diameter at most 3":
         return gp.is_connected(G) and gp.is_planar(G) and gp.diameter(G) <= 3
+    elif property == "a connected graph with mobious(d_1) + ... + mobious(d_n) > 0":
+        return gp.is_connected(G) and sum([mobius(d) for d in gp.degree_sequence(G)]) > 0
+    elif property == "a connected graph with mobious(d_1) + ... + mobious(d_n) < 0":
+        return gp.is_connected(G) and sum([mobius(d) for d in gp.degree_sequence(G)]) < 0
+    elif property == "a connected graph with mobious(d_1) + ... + mobious(d_n) = 0":
+        return gp.is_connected(G) and sum([mobius(d) for d in gp.degree_sequence(G)]) == 0
+    elif property == "a connected graph with mobious(order) < 0":
+        return gp.is_connected(G) and mobius(gp.number_of_nodes(G)) < 0
+    elif property == "a connected graph with mobious(order) > 0":
+        return gp.is_connected(G) and mobius(gp.number_of_nodes(G)) > 0
+    elif property == "a connected graph with mobious(order) = 0":
+        return gp.is_connected(G) and mobius(gp.number_of_nodes(G)) == 0
     else:
         return getattr(gp, property)(G)
 
@@ -319,6 +345,10 @@ def prod(iterable):
     for n in iterable:
         p *= n
     return p
+
+def sum_mobious_function_degrees(G):
+    degree_sequence = gp.degree_sequence(G)
+    return sum(mobius(degree) for degree in degree_sequence)
 
 
 # Define our functions

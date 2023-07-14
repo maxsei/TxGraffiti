@@ -28,3 +28,9 @@ a connected and well-covered graph
 a connected graph with diameter at most 3
 a connected and planar graph with diameter at most 3
 a connected graph with a total domination number equal to the domination number
+a connected graph with mobious(d_1) + ... + mobious(d_n) > 0
+a connected graph with mobious(d_1) + ... + mobious(d_n) = 0
+a connected graph with mobious(d_1) + ... + mobious(d_n) < 0
+a connected graph with mobious(order) < 0
+a connected graph with mobious(order) > 0
+a connected graph with mobious(order) = 0

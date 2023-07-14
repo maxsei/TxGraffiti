@@ -4,6 +4,7 @@ connected_domination_number
 independence_number
 power_domination_number
 zero_forcing_number
+total_zero_forcing_number
 diameter
 radius
 order
@@ -31,13 +32,18 @@ k_residual_index
 (order - connected_domination_number)
 (order - power_domination_number)
 (order - zero_forcing_number)
+(order - triameter)
 (order - diameter)
 (order - radius)
+(size - triameter)
+(size - diameter)
+(size - radius)
 (order - independent_domination_number)
 (order - chromatic_number)
 (order - matching_number)
 (order - min_maximal_matching_number)
-(order - triameter)
+(size - matching_number)
+(size - min_maximal_matching_number)
 (order - min_degree)
 (order - max_degree)
 (order - clique_number)
@@ -50,46 +56,31 @@ k_residual_index
 order_number_of_divisors
 order_sum_of_divisors
 order_euler_totient
-order_mobius_function
 order_sum_of_proper_divisors
-order_sum_of_digits
-order_product_of_digits
 order_number_of_prime_factors
 order_number_of_distinct_prime_factors
 independence_number_of_divisors
 independence_sum_of_divisors
 independence_euler_totient
-independence_mobius_function
 independence_sum_of_proper_divisors
-independence_sum_of_digits
-independence_product_of_digits
 independence_number_of_prime_factors
 independence_number_of_distinct_prime_factors
 matching_number_of_divisors
 matching_sum_of_divisors
 matching_euler_totient
-matching_mobius_function
 matching_sum_of_proper_divisors
-matching_sum_of_digits
-matching_product_of_digits
 matching_number_of_prime_factors
 matching_number_of_distinct_prime_factors
 zero_forcing_number_of_divisors
 zero_forcing_sum_of_divisors
 zero_forcing_euler_totient
-zero_forcing_mobius_function
 zero_forcing_sum_of_proper_divisors
-zero_forcing_sum_of_digits
-zero_forcing_product_of_digits
 zero_forcing_number_of_prime_factors
 zero_forcing_number_of_distinct_prime_factors
 domination_number_of_divisors
 domination_sum_of_divisors
 domination_euler_totient
-domination_mobius_function
 domination_sum_of_proper_divisors
-domination_sum_of_digits
-domination_product_of_digits
 domination_number_of_prime_factors
 domination_number_of_distinct_prime_factors
 min_edge_cover
@@ -97,3 +88,5 @@ min_edge_cover
 [order/ max_degree]
 [order/ (max_degree + 1)]
 [order/ (max_degree - 1)]
+[order/ (max_degree + 2)]
+(residue + annihilation_number)
