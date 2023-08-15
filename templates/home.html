@@ -17,8 +17,12 @@
 <body class="uk-background-secondary" uk-height-viewport>
 <div class="uk-container uk-flex uk-flex-center">
 </div>
-	<div>
-		{{ message }}
-	</div>
+	<form hx-post="/num_math_obj" hx-target="this" hx-swap="outerHTML">
+		<div class="form-group">
+			<label>Enter the name of the mathematical objects to conjecture on:</label>
+			<input type="number" name="number">
+		</div>
+		<button class="btn">Submit</button>
+	</form>
 </body>
 </html>
